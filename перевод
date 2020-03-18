@@ -1,0 +1,23 @@
+var
+  f:text;
+  a:array[1..100,1..100] of integer;
+  i,j,k,m,n,max:integer;
+begin
+  assign(f,'file.txt');
+  reset(f);
+  readln(f,m,n);
+  for i:=1 to m do
+    for j:=1 to n do
+      read(f,a[i,j]);
+  close(f);
+  max:=a[1,1];
+  for i:=1 to m do
+    for j:=1 to n do
+      if a[i,j]>max then max:=a[i,j];
+  for j:=1 to n do
+    for i:=1 to m do
+      if a[i,j]=max then begin
+        for k:=1 to m do write(a[k,j],' ');
+        writeln; break;
+      end;
+end.
